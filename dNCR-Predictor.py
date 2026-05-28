@@ -8,16 +8,15 @@ import numpy as np
 # 1. Load model, scaler, feature columns, and thresholds
 # =========================
 model_path = "ann_calibrated_model.pkl"
-scaler_path = "common_scaler_for_lr_svm_ann.pkl"
-feature_cols_path = "final_feature_columns.pkl"
-thresholds_path = "five_models_thresholds_calibrated.pkl"
+scaler_path = "ann_scaler.pkl"
+feature_cols_path = "ann_feature_columns.pkl"
 
-model = joblib.load(model_path)
+model = joblib.load("ann_calibrated_model.pkl")
 scaler = joblib.load(scaler_path)
 feature_cols = joblib.load(feature_cols_path)
-threshold_dict = joblib.load(thresholds_path)
-ann_threshold = threshold_dict['ANN']   # 0.23
 
+# 直接使用训练时计算得到的 ANN 最优阈值（0.23）
+ann_threshold = 0.23
 # =========================
 # 2. Streamlit UI
 # =========================
